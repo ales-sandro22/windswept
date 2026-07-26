@@ -16,6 +16,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "windswept:stare_armor_trim_smithing_template",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
           "functions": [
             {
               "add": false,
@@ -41,6 +46,21 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:stick"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "windswept:stare_armor_trim_smithing_template",
+          "weight": 13
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 87
         }
       ],
       "rolls": 1.0
