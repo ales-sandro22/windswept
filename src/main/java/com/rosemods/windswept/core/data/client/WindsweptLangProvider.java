@@ -10,6 +10,7 @@ import com.rosemods.windswept.core.registry.datapack.WindsweptBiomes;
 import com.rosemods.windswept.core.registry.datapack.WindsweptDamageTypes;
 import com.rosemods.windswept.core.registry.datapack.WindsweptPaintingVariants;
 import com.rosemods.windswept.core.registry.datapack.WindsweptTrimMaterials;
+import com.rosemods.windswept.core.registry.datapack.WindsweptTrimPatterns;
 import com.rosemods.windswept.integration.jei.WindsweptPlugin;
 import com.teamabnormals.blueprint.common.block.sign.BlueprintStandingSignBlock;
 import com.teamabnormals.blueprint.common.block.sign.BlueprintWallSignBlock;
@@ -27,6 +28,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.armortrim.TrimMaterial;
+import net.minecraft.world.item.armortrim.TrimPattern;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
@@ -132,6 +134,9 @@ public class WindsweptLangProvider extends LanguageProvider {
         this.translateTrimMaterial(WindsweptTrimMaterials.ICICLES, "Icicles Material");
         this.translateTrimMaterial(WindsweptTrimMaterials.PINECONE, "Pinecone Material");
 
+        // Trim Patterns //
+        this.translateTrimPattern(WindsweptTrimPatterns.STARE, "Stare Armor Trim");
+
         // Paintings //
         this.translatePainting(WindsweptPaintingVariants.CLIFFSIDE, "Binome");
         this.translatePainting(WindsweptPaintingVariants.DRESS_CODES, "Yapettoshen");
@@ -201,6 +206,10 @@ public class WindsweptLangProvider extends LanguageProvider {
 
     private void translateTrimMaterial(ResourceKey<TrimMaterial> material, String name) {
         this.add("trim_material." + material.location().toString().replace(':', '.'), name);
+    }
+
+    private void translateTrimPattern(ResourceKey<TrimPattern> pattern, String name) {
+        this.add("trim_pattern." + pattern.location().toString().replace(':', '.'), name);
     }
 
     private void translatePainting(ResourceKey<PaintingVariant> painting, String author) {

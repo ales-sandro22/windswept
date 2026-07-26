@@ -9,7 +9,6 @@ import com.teamabnormals.blueprint.core.other.tags.BlueprintItemTags;
 import com.teamabnormals.blueprint.core.util.TagUtil;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
@@ -27,6 +26,7 @@ public class WindsweptItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+
         //windswept
         this.tag(WindsweptItemTags.ROSES).add(RED_ROSE.asItem(), BLUE_ROSE.asItem(), WHITE_ROSE.asItem(), YELLOW_ROSE.asItem(), Items.WITHER_ROSE, Items.ROSE_BUSH, RED_ROSE_BUSH.asItem(), BLUE_ROSE_BUSH.asItem(), WHITE_ROSE_BUSH.asItem(), YELLOW_ROSE_BUSH.asItem());
         this.copy(WindsweptBlockTags.HOLLY_LOGS, WindsweptItemTags.HOLLY_LOGS);
@@ -95,6 +95,7 @@ public class WindsweptItemTagProvider extends ItemTagsProvider {
         //vanilla
         this.tag(ItemTags.DECORATED_POT_SHERDS).add(HOOT_POTTERY_SHERD.get(), PLUMAGE_POTTERY_SHERD.get(), OFFSHOOT_POTTERY_SHERD.get(), FLAKE_POTTERY_SHERD.get(), DRUPES_POTTERY_SHERD.get());
         this.tag(ItemTags.TRIM_MATERIALS).add(ICICLES.asItem(), PINECONE.asItem());
+        this.tag(ItemTags.TRIM_TEMPLATES).add(STARE_ARMOR_TRIM_SMITHING_TEMPLATE.get());
         this.tag(ItemTags.ARROWS).add(FROST_ARROW.get());
         this.tag(ItemTags.FOX_FOOD).add(WILD_BERRIES.get());
         this.tag(ItemTags.BOATS).add(HOLLY_BOAT.getFirst().get(), CHESTNUT_BOAT.getFirst().get(), PINE_BOAT.getFirst().get());
@@ -103,6 +104,8 @@ public class WindsweptItemTagProvider extends ItemTagsProvider {
         this.tag(ItemTags.HANGING_SIGNS).add(HOLLY_HANGING_SIGNS.getFirst().asItem(), CHESTNUT_HANGING_SIGNS.getFirst().asItem(), PINE_HANGING_SIGNS.getFirst().asItem());
         this.tag(ItemTags.MEAT).add(FROZEN_FLESH.asItem(), GOAT.asItem(), COOKED_GOAT.asItem());
         this.tag(ItemTags.WOLF_FOOD).add(FROZEN_FLESH.asItem());
+        this.tag(TagUtil.itemTag("minecraft", "lanterns")).add(ICE_LANTERN.asItem());
+        this.tag(TagUtil.itemTag("minecraft", "chains")).add(ICE_CHAIN.asItem());
         this.copy(BlockTags.LEAVES, ItemTags.LEAVES);
         this.copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
         this.copy(BlockTags.PLANKS, ItemTags.PLANKS);

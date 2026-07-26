@@ -3,6 +3,7 @@ package com.rosemods.windswept.core.registry;
 import com.mojang.datafixers.util.Pair;
 import com.rosemods.windswept.common.item.*;
 import com.rosemods.windswept.core.Windswept;
+import com.rosemods.windswept.core.registry.datapack.*;
 import com.rosemods.windswept.core.other.WindsweptConstants;
 import com.rosemods.windswept.core.other.WindsweptFoods;
 import com.rosemods.windswept.core.other.tags.WindsweptBannerPatternTags;
@@ -25,7 +26,7 @@ public final class WindsweptItems {
     public static final DeferredItem<Item> HOLLY_BERRIES_ON_A_STICK = ITEMS.createItem("holly_berries_on_a_stick", () -> new HollyBerriesOnAStickItem(new Item.Properties().durability(25)));
     public static final DeferredItem<Item> ELDER_FEATHER = ITEMS.createItem("elder_feather", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> FROST_ARROW = ITEMS.createItem("frost_arrow", () -> new FrostArrowItem(new Item.Properties()));
-    public static final DeferredItem<Item> FROZEN_BRANCH = ITEMS.createItem("frozen_branch", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> FROZEN_BRANCH = ITEMS.createItem("frozen_branch", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> FROZEN_FLESH = ITEMS.createItem("frozen_flesh", () -> new Item(new Item.Properties().food(WindsweptFoods.FROZEN_FLESH)));
 
     // Armour //
@@ -74,6 +75,9 @@ public final class WindsweptItems {
     public static final DeferredItem<Item> OFFSHOOT_POTTERY_SHERD = ITEMS.createItem("offshoot_pottery_sherd", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> FLAKE_POTTERY_SHERD = ITEMS.createItem("flake_pottery_sherd", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DRUPES_POTTERY_SHERD = ITEMS.createItem("drupes_pottery_sherd", () -> new Item(new Item.Properties()));
+
+    // Armor Trims //
+    public static final DeferredItem<Item> STARE_ARMOR_TRIM_SMITHING_TEMPLATE = ITEMS.createItem("stare_armor_trim_smithing_template", () -> SmithingTemplateItem.createArmorTrimTemplate(WindsweptTrimPatterns.STARE));
 
     // Banner Patterns //
     public static final DeferredItem<Item> SNOW_GOLEM_BANNER_PATTERN = ITEMS.createItem("snow_golem_banner_pattern", () -> new BannerPatternItem(WindsweptBannerPatternTags.SNOW_GOLEM, new Item.Properties().stacksTo(1)));

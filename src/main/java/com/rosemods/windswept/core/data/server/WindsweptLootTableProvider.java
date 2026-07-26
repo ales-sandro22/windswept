@@ -39,6 +39,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 
 import java.util.List;
 import java.util.Set;
@@ -346,6 +347,7 @@ public class WindsweptLootTableProvider extends LootTableProvider {
             // tall plants
             this.tallFlower(LUPINE.get());
             this.tallFlower(LIONS_TAIL.get());
+            this.tallFlower(DESERT_LILY.get());
             this.tallFlower(RED_ROSE_BUSH.get());
             this.tallFlower(BLUE_ROSE_BUSH.get());
             this.tallFlower(WHITE_ROSE_BUSH.get());
@@ -353,6 +355,7 @@ public class WindsweptLootTableProvider extends LootTableProvider {
 
             // sprouts
             this.add(SNOWY_SPROUTS.get(), BlockLootSubProvider::createShearsOnlyDrop);
+            this.add(SANDY_SPROUTS.get(), BlockLootSubProvider::createShearsOnlyDrop);
             this.add(GELISOL_GRASS.get(), BlockLootSubProvider::createShearsOnlyDrop);
             this.add(DRY_MOSSY_SPROUTS.get(), BlockLootSubProvider::createShearsOnlyDrop);
             this.add(MOSSY_SPROUTS.get(), BlockLootSubProvider::createShearsOnlyDrop);
@@ -370,6 +373,9 @@ public class WindsweptLootTableProvider extends LootTableProvider {
             this.dropSelf(NIGHTSHADE.get());
             this.add(LAVENDER.get(), this::createLavenderTable);
             this.dropSelf(MIMOSA.get());
+            this.dropSelf(BRITTLEBUSH.get());
+            this.dropSelf(LARKSPUR.get());
+            this.dropSelf(VERBENA.get());
 
             this.dropSelf(FLOWERING_ACACIA_SAPLING.get());
             this.dropPottedContents(POTTED_FLOWERING_ACACIA_SAPLING.get());
@@ -389,11 +395,15 @@ public class WindsweptLootTableProvider extends LootTableProvider {
             this.dropPottedContents(POTTED_WILD_GINGER.get());
             this.dropPottedContents(POTTED_NIGHTSHADE.get());
             this.dropPottedContents(POTTED_SNOWY_SPROUTS.get());
+            this.dropPottedContents(POTTED_SANDY_SPROUTS.get());
             this.dropPottedContents(POTTED_GELISOL_GRASS.get());
             this.dropPottedContents(POTTED_DRY_MOSSY_SPROUTS.get());
             this.dropPottedContents(POTTED_MOSSY_SPROUTS.get());
             this.dropPottedContents(POTTED_LAVENDER.get());
             this.dropPottedContents(POTTED_MIMOSA.get());
+            this.dropPottedContents(POTTED_BRITTLEBUSH.get());
+            this.dropPottedContents(POTTED_VERBENA.get());
+            this.dropPottedContents(POTTED_LARKSPUR.get());
 
             // lavender thatch
             this.dropSelf(LAVENDER_BALE.get());
@@ -618,22 +628,32 @@ public class WindsweptLootTableProvider extends LootTableProvider {
                 register("pine_totem", LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1f))
                         .add(LootItem.lootTableItem(HOOT_POTTERY_SHERD.get()).setWeight(3))
                         .add(LootItem.lootTableItem(PLUMAGE_POTTERY_SHERD.get()).setWeight(4))
+                        .add(LootItem.lootTableItem(STARE_ARMOR_TRIM_SMITHING_TEMPLATE.get()).setWeight(2))
                         .add(LootItem.lootTableItem(ELDER_FEATHER.get()).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4))))
                         .add(LootItem.lootTableItem(PINECONE.get()).setWeight(1))
                         .add(LootItem.lootTableItem(Items.EMERALD).setWeight(1))
                         .add(LootItem.lootTableItem(Items.STICK).setWeight(1))
-                ), builder);
+                        )
+                        .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1f))
+                                .add(LootItem.lootTableItem(STARE_ARMOR_TRIM_SMITHING_TEMPLATE.get()).setWeight(13))
+                                .add(EmptyLootItem.emptyItem().setWeight(87))
+                        ), builder);
 
-                register("snowy_pine_totem", LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1f))
-                        .add(LootItem.lootTableItem(HOOT_POTTERY_SHERD.get()).setWeight(3))
-                        .add(LootItem.lootTableItem(FLAKE_POTTERY_SHERD.get()).setWeight(3))
-                        .add(LootItem.lootTableItem(PLUMAGE_POTTERY_SHERD.get()).setWeight(4))
-                        .add(LootItem.lootTableItem(ELDER_FEATHER.get()).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4))))
-                        .add(LootItem.lootTableItem(PINECONE.get()).setWeight(1))
-                        .add(LootItem.lootTableItem(FROZEN_FLESH.get()).setWeight(1))
-                        .add(LootItem.lootTableItem(Items.EMERALD).setWeight(1))
-                        .add(LootItem.lootTableItem(Items.STICK).setWeight(1))
-                ), builder);
+                register("snowy_pine_totem", LootTable.lootTable()
+                        .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1f))
+                                .add(LootItem.lootTableItem(HOOT_POTTERY_SHERD.get()).setWeight(3))
+                                .add(LootItem.lootTableItem(FLAKE_POTTERY_SHERD.get()).setWeight(3))
+                                .add(LootItem.lootTableItem(PLUMAGE_POTTERY_SHERD.get()).setWeight(4))
+                                .add(LootItem.lootTableItem(ELDER_FEATHER.get()).setWeight(2).apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4))))
+                                .add(LootItem.lootTableItem(PINECONE.get()).setWeight(1))
+                                .add(LootItem.lootTableItem(FROZEN_FLESH.get()).setWeight(1))
+                                .add(LootItem.lootTableItem(Items.EMERALD).setWeight(1))
+                                .add(LootItem.lootTableItem(Items.STICK).setWeight(1))
+                        )
+                        .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1f))
+                                .add(LootItem.lootTableItem(STARE_ARMOR_TRIM_SMITHING_TEMPLATE.get()).setWeight(13))
+                                .add(EmptyLootItem.emptyItem().setWeight(87))
+                        ), builder);
 
                 register("grove_weathered_house", LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1f))
                         .add(LootItem.lootTableItem(FLAKE_POTTERY_SHERD.get()).setWeight(3))

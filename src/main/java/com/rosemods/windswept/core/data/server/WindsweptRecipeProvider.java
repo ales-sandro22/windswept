@@ -216,11 +216,15 @@ public class WindsweptRecipeProvider extends BlueprintRecipeProvider {
         flowerToDye(NIGHTSHADE.get(), Items.LIGHT_BLUE_DYE, output);
         flowerToDye(YELLOW_PETALS.get(), Items.YELLOW_DYE, output);
         flowerToDye(MIMOSA.get(), Items.YELLOW_DYE, output);
+        flowerToDye(BRITTLEBUSH.get(), Items.YELLOW_DYE, output);
+        flowerToDyeNoDyeDepot(LARKSPUR.get(), Items.CYAN_DYE, output);
+        flowerToDye(VERBENA.get(), Items.PURPLE_DYE, output);
         tallFlowerToDyeNoDyeDepot(RED_ROSE_BUSH.get(), Items.RED_DYE, output);
         tallFlowerToDye(BLUE_ROSE_BUSH.get(), Items.BLUE_DYE, output);
         tallFlowerToDye(WHITE_ROSE_BUSH.get(), Items.WHITE_DYE, output);
         tallFlowerToDye(YELLOW_ROSE_BUSH.get(), Items.YELLOW_DYE, output);
         tallFlowerToDye(LUPINE.get(), Items.PURPLE_DYE, output);
+        tallFlowerToDye(DESERT_LILY.get(), Items.LIME_DYE, output);
         tallFlowerToDyeNoDyeDepot(LIONS_TAIL.get(), Items.ORANGE_DYE, output);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(PINECONE.get()), RecipeCategory.MISC, Items.BROWN_DYE, .35f, 200).unlockedBy(getHasName(PINECONE.get()), has(PINECONE.get())).save(output, getSaveLocation("brown_dye_from_pinecone_smelting"));
 
@@ -243,6 +247,8 @@ public class WindsweptRecipeProvider extends BlueprintRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, PINECONE_WREATH.get()).define('#', PINECONE.get()).define('B', FROZEN_BRANCH.get()).pattern(" # ").pattern("#B#").pattern(" # ").unlockedBy(getHasName(PINECONE.get()), has(PINECONE.get())).save(output, getSaveLocation(PINECONE_WREATH.get()));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, VINE_WREATH.get()).define('#', Items.VINE).define('B', FROZEN_BRANCH.get()).pattern(" # ").pattern("#B#").pattern(" # ").unlockedBy(getHasName(Items.VINE), has(Items.VINE)).save(output, getSaveLocation(VINE_WREATH.get()));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, CHERRY_WREATH.get()).define('#', Items.CHERRY_LEAVES).define('B', FROZEN_BRANCH.get()).pattern(" # ").pattern("#B#").pattern(" # ").unlockedBy(getHasName(Items.CHERRY_LEAVES), has(Items.CHERRY_LEAVES)).save(output, getSaveLocation(CHERRY_WREATH.get()));
+
+        trimRecipes(output, STARE_ARMOR_TRIM_SMITHING_TEMPLATE.get(), PINECONE_BLOCK.get());
 
         // blocks
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GINGER_SOIL.get()).requires(Items.DIRT).requires(GINGER_ROOT.get()).unlockedBy(getHasName(GINGER_ROOT.get()), has(GINGER_ROOT.get())).save(output, getSaveLocation(GINGER_SOIL.get()));

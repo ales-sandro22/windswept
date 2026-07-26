@@ -81,6 +81,7 @@ public class WindsweptModelProvider extends BlueprintBlockStateProvider {
         this.generatedItem(OFFSHOOT_POTTERY_SHERD.get(), TextureFolder.ITEM);
         this.generatedItem(FLAKE_POTTERY_SHERD.get(), TextureFolder.ITEM);
         this.generatedItem(DRUPES_POTTERY_SHERD.get(), TextureFolder.ITEM);
+        this.generatedItem(STARE_ARMOR_TRIM_SMITHING_TEMPLATE.get(), TextureFolder.ITEM);
         this.generatedItem(SNOW_GOLEM_BANNER_PATTERN.get(), TextureFolder.ITEM);
         this.generatedItem(SNOW_CHARGE_BANNER_PATTERN.get(), TextureFolder.ITEM);
         this.generatedItem(ROSE_FLOWER_BANNER_PATTERN.get(), TextureFolder.ITEM);
@@ -364,6 +365,7 @@ public class WindsweptModelProvider extends BlueprintBlockStateProvider {
 
         // sprouts
         this.pottedPlantWithPottedVariant(SNOWY_SPROUTS, POTTED_SNOWY_SPROUTS, TextureFolder.ITEM);
+        this.pottedPlantWithPottedVariant(SANDY_SPROUTS, POTTED_SANDY_SPROUTS, TextureFolder.ITEM);
         this.pottedPlantWithPottedVariant(GELISOL_GRASS, POTTED_GELISOL_GRASS, TextureFolder.BLOCK);
         this.pottedPlantWithPottedVariant(DRY_MOSSY_SPROUTS, POTTED_DRY_MOSSY_SPROUTS, TextureFolder.ITEM);
         this.pottedPlantWithPottedVariant(MOSSY_SPROUTS, POTTED_MOSSY_SPROUTS, TextureFolder.ITEM);
@@ -375,6 +377,7 @@ public class WindsweptModelProvider extends BlueprintBlockStateProvider {
         this.tallPlant(YELLOW_ROSE_BUSH);
         this.tallPlant(LUPINE);
         this.tallPlant(LIONS_TAIL);
+        this.tallPlant(DESERT_LILY);
 
         this.pottedPlant(RED_ROSE, POTTED_RED_ROSE);
         this.pottedPlant(BLUE_ROSE, POTTED_BLUE_ROSE);
@@ -382,11 +385,14 @@ public class WindsweptModelProvider extends BlueprintBlockStateProvider {
         this.pottedPlant(YELLOW_ROSE, POTTED_YELLOW_ROSE);
         this.pottedPlant(FOXGLOVE, POTTED_FOXGLOVE);
         this.pottedPlant(NIGHTSHADE, POTTED_NIGHTSHADE);
+        this.pottedPlant(LARKSPUR, POTTED_LARKSPUR);
+        this.pottedPlant(VERBENA, POTTED_VERBENA);
         this.pottedPlantWithPottedVariant(SNOWDROP, POTTED_SNOWDROP, TextureFolder.BLOCK);
         this.pottedPlantWithPottedVariant(MOSS_CAMPION, POTTED_MOSS_CAMPION, TextureFolder.BLOCK);
         this.pottedPlantWithPottedVariant(WILD_GINGER, POTTED_WILD_GINGER, TextureFolder.BLOCK);
         this.pottedPlantWithPottedVariant(BLUEBELLS, POTTED_BLUEBELLS, TextureFolder.BLOCK);
         this.pottedPlantWithPottedVariant(MIMOSA, POTTED_MIMOSA, TextureFolder.ITEM);
+        this.pottedPlantWithPottedVariant(BRITTLEBUSH, POTTED_BRITTLEBUSH, TextureFolder.BLOCK);
 
         // lavender
         this.getVariantBuilder(LAVENDER.get())
