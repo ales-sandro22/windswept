@@ -9,6 +9,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
@@ -26,8 +27,12 @@ public class HollyLeavesBlock extends LeavesBlock {
             double d0 = Math.abs(entity.getX() - entity.xOld);
             double d1 = Math.abs(entity.getZ() - entity.zOld);
 
-            if (d0 >= .003d || d1 >= .003d)
+            if (d0 >= .003d || d1 >= .003d) {
+                Vec3 motion = entity.getDeltaMovement();
                 entity.hurt(entity.damageSources().source(WindsweptDamageTypes.HOLLY_LEAVES), damage);
+                entity.setDeltaMovement(motion);
+                entity.hurtMarked = false;
+            }
         }
     }
 
