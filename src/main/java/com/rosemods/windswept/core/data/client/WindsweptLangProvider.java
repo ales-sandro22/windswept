@@ -6,11 +6,7 @@ import com.rosemods.windswept.core.Windswept;
 import com.rosemods.windswept.core.registry.WindsweptAttributes;
 import com.rosemods.windswept.core.registry.WindsweptEffects;
 import com.rosemods.windswept.core.registry.WindsweptEnchantments;
-import com.rosemods.windswept.core.registry.datapack.WindsweptBiomes;
-import com.rosemods.windswept.core.registry.datapack.WindsweptDamageTypes;
-import com.rosemods.windswept.core.registry.datapack.WindsweptPaintingVariants;
-import com.rosemods.windswept.core.registry.datapack.WindsweptTrimMaterials;
-import com.rosemods.windswept.core.registry.datapack.WindsweptTrimPatterns;
+import com.rosemods.windswept.core.registry.datapack.*;
 import com.rosemods.windswept.integration.jei.WindsweptPlugin;
 import com.teamabnormals.blueprint.common.block.sign.BlueprintStandingSignBlock;
 import com.teamabnormals.blueprint.common.block.sign.BlueprintWallSignBlock;
@@ -244,7 +240,7 @@ public class WindsweptLangProvider extends LanguageProvider {
         this.addDescription(item, desc);
 
         for (DyeColor dye : DyeColor.values())
-            this.add("block.minecraft.banner." + Windswept.MOD_ID + "." + name + "." + dye.getName(), toUpper(dye.getName()) + " " + desc);
+            this.add("block." + Windswept.MOD_ID + ".banner." + name + "." + dye.getName(), toUpper(dye.getName()) + " " + desc);
     }
 
     private void jeiInfo(Supplier<? extends ItemLike> item, String desc) {
