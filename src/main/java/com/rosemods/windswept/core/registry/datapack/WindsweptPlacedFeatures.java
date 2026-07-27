@@ -74,6 +74,7 @@ public final class WindsweptPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BRITTLEBUSHES = createKey("brittlebushes");
     public static final ResourceKey<PlacedFeature> LARKSPURS = createKey("larkspurs");
     public static final ResourceKey<PlacedFeature> VERBENAS = createKey("verbena");
+    public static final ResourceKey<PlacedFeature> DESERT_LILIES = createKey("desert_lilies");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         createPlantPatch(context, RED_ROSE, 16, WindsweptConfiguredFeatures.RED_ROSE);
@@ -130,6 +131,7 @@ public final class WindsweptPlacedFeatures {
         createPlantPatch(context, BRITTLEBUSHES, 12, WindsweptConfiguredFeatures.BRITTLEBUSHES);
         createPlantPatch(context, LARKSPURS, 42, WindsweptConfiguredFeatures.LARKSPURS);
         createPlantPatch(context, VERBENAS, 42, WindsweptConfiguredFeatures.VERBENAS);
+        createPlantPatch(context, DESERT_LILIES, 24, WindsweptConfiguredFeatures.DESERT_LILIES);
     }
 
     private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, ResourceKey<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {

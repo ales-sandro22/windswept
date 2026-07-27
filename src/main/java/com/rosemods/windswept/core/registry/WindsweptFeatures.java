@@ -17,6 +17,7 @@ public final class WindsweptFeatures {
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> NIGHTSHADE_PATCH = FEATURES.register("nightshade_patch", NightshadeFeature::new);
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> BLUEBELL_PATCH = FEATURES.register("bluebell_patch", BluebellsFeature::new);
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> LAVENDER_PATCH = FEATURES.register("lavender_patch", LavenderFeature::new);
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> DESERT_LILY_PATCH = FEATURES.register("desert_lily_patch", DesertLilyFeature::new);
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> ICICLES_PATCH = FEATURES.register("icicles_patch", IciclesFeature::new);
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> FLOOR_ICICLES_PATCH = FEATURES.register("floor_icicles_patch", FloorIciclesFeature::new);
     public static final DeferredHolder<Feature<?>, Feature<SimpleBlockConfiguration>> FALLEN_LOG = FEATURES.register("fallen_log", FallenLogFeature::new);

@@ -96,6 +96,7 @@ public final class WindsweptConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRITTLEBUSHES = createKey("brittlebushes");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARKSPURS = createKey("larkspurs");
     public static final ResourceKey<ConfiguredFeature<?, ?>> VERBENAS = createKey("verbena");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DESERT_LILIES = createKey("desert_lilies");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<PlacedFeature> placed = context.lookup(Registries.PLACED_FEATURE);
@@ -154,6 +155,7 @@ public final class WindsweptConfiguredFeatures {
         context.register(BRITTLEBUSHES, new ConfiguredFeature<>(Feature.FLOWER, Configs.createPlantPatch(24, WindsweptBlocks.BRITTLEBUSH.get().defaultBlockState())));
         context.register(LARKSPURS, new ConfiguredFeature<>(Feature.FLOWER, Configs.createPlantPatch(6, WindsweptBlocks.LARKSPUR.get().defaultBlockState())));
         context.register(VERBENAS, new ConfiguredFeature<>(Feature.FLOWER, Configs.createPlantPatch(6, WindsweptBlocks.VERBENA.get().defaultBlockState())));
+        context.register(DESERT_LILIES, new ConfiguredFeature<>(DESERT_LILY_PATCH.get(), NoneFeatureConfiguration.NONE));
     }
 
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {

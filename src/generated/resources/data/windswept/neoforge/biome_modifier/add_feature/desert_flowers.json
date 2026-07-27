@@ -4,7 +4,8 @@
   "features": [
     "windswept:brittlebushes",
     "windswept:verbena",
-    "windswept:larkspurs"
+    "windswept:larkspurs",
+    "windswept:desert_lilies"
   ],
   "step": "vegetal_decoration"
 }
