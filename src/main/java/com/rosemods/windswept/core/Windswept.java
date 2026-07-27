@@ -81,7 +81,6 @@ public class Windswept {
             WindsweptBlockInfo.changeLocalisation();
             WindsweptBlockInfo.registerCompostables();
             WindsweptBlockInfo.registerFlammables();
-            WindsweptEffects.registerPotionRecipes();
             WindsweptDispenseBehaviors.registerDispenseBehaviors();
             WindsweptCauldronInteractions.registerCauldronInteractions();
             WindsweptPotPatterns.registerPatterns();

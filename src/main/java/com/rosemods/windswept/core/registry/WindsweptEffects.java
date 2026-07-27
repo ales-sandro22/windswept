@@ -13,6 +13,7 @@ public class WindsweptEffects {
 
     // Effects //
     public static final DeferredHolder<MobEffect, MobEffect> THORNS = EFFECTS.createEffect("thorns", MobEffectCategory.BENEFICIAL, 0x295230);
+
     // Potions //
     public static final DeferredHolder<Potion, Potion> THORNS_POTION = EFFECTS.createPotion("thorns", THORNS, 3600, 0);
     //public static final DeferredHolder<MobEffect> PLENTY = HELPER.createEffect("plenty", MobEffectCategory.BENEFICIAL, 0xe68834);
@@ -21,16 +22,5 @@ public class WindsweptEffects {
     public static final DeferredHolder<MobEffect, MobEffect> FROST_RESISTANCE = EFFECTS.createEffect("frost_resistance", MobEffectCategory.BENEFICIAL, 0x618cff);
     public static final DeferredHolder<Potion, Potion> FROST_RESISTANCE_POTION = EFFECTS.createPotion("frost_resistance", FROST_RESISTANCE, 3600, 0);
     public static final DeferredHolder<Potion, Potion> LONG_FROST_RESISTANCE_POTION = EFFECTS.createPotion("long_frost_resistance", FROST_RESISTANCE, 9600, 0);
-
-    public static void registerPotionRecipes() {
-        //DataUtil.addMix(Potions.AWKWARD, WindsweptBlocks.NIGHTSHADE.asItem(), Potions.NIGHT_VISION);
-
-        //DataUtil.addMix(Potions.AWKWARD, WindsweptItems.HOLLY_BERRIES.get(), THORNS_POTION.get());
-        //DataUtil.addMix(THORNS_POTION.get(), Items.REDSTONE, LONG_THORNS_POTION.get());
-        //DataUtil.addMix(THORNS_POTION.get(), Items.GLOWSTONE_DUST, STRONG_THORNS_POTION.get());
-
-        //DataUtil.addMix(Potions.AWKWARD, WindsweptItems.FROZEN_BRANCH.get(), FROST_RESISTANCE_POTION.get());
-        //DataUtil.addMix(FROST_RESISTANCE_POTION.get(), Items.REDSTONE, LONG_FROST_RESISTANCE_POTION.get());
-    }
 
 }

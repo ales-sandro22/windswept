@@ -8,6 +8,7 @@ import com.rosemods.windswept.core.Windswept;
 import com.rosemods.windswept.core.WindsweptConfig;
 import com.rosemods.windswept.core.other.WindsweptDataProcessors;
 import com.rosemods.windswept.core.other.tags.WindsweptEntityTypeTags;
+import com.rosemods.windswept.core.registry.WindsweptBlocks;
 import com.rosemods.windswept.core.registry.WindsweptEffects;
 import com.rosemods.windswept.core.registry.WindsweptEntityTypes;
 import com.rosemods.windswept.core.registry.WindsweptItems;
@@ -24,11 +25,13 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Rabbit;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.living.BabyEntitySpawnEvent;
 import net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
@@ -40,6 +43,18 @@ import java.util.List;
 @EventBusSubscriber(modid = Windswept.MOD_ID)
 public class WindsweptEntityEvents {
     private static final List<MobSpawnType> NATURAL_SPAWNS = List.of(MobSpawnType.NATURAL, MobSpawnType.CHUNK_GENERATION, MobSpawnType.PATROL, MobSpawnType.REINFORCEMENT, MobSpawnType.JOCKEY);
+
+    @SubscribeEvent
+    public static void onRegisterBrewing(RegisterBrewingRecipesEvent event) {
+        event.getBuilder().addStartMix(WindsweptBlocks.NIGHTSHADE.asItem(), Potions.NIGHT_VISION);
+
+        event.getBuilder().addStartMix(WindsweptItems.HOLLY_BERRIES.get(), WindsweptEffects.THORNS_POTION);
+        event.getBuilder().addMix(WindsweptEffects.THORNS_POTION, Items.REDSTONE, WindsweptEffects.LONG_THORNS_POTION);
+        event.getBuilder().addMix(WindsweptEffects.THORNS_POTION, Items.GLOWSTONE_DUST, WindsweptEffects.STRONG_THORNS_POTION);
+
+        event.getBuilder().addStartMix(WindsweptItems.FROZEN_BRANCH.get(), WindsweptEffects.FROST_RESISTANCE_POTION);
+        event.getBuilder().addMix(WindsweptEffects.FROST_RESISTANCE_POTION, Items.REDSTONE, WindsweptEffects.LONG_FROST_RESISTANCE_POTION);
+    }
 
     @SubscribeEvent
     public static void onEntityHurt(LivingIncomingDamageEvent event) {
