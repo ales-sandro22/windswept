@@ -3,7 +3,8 @@
   "biomes": "#c:is_desert",
   "features": [
     "windswept:brittlebushes",
-    "windswept:verbena"
+    "windswept:verbena",
+    "windswept:larkspurs"
   ],
   "step": "vegetal_decoration"
 }

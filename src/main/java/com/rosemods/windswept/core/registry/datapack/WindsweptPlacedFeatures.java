@@ -128,8 +128,8 @@ public final class WindsweptPlacedFeatures {
         register(context, ARKOSE, WindsweptConfiguredFeatures.ARKOSE, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)), BiomeFilter.biome());
         register(context, SANDY_SPROUTS, WindsweptConfiguredFeatures.SANDY_SPROUTS, VegetationPlacements.worldSurfaceSquaredWithCount(2));
         createPlantPatch(context, BRITTLEBUSHES, 12, WindsweptConfiguredFeatures.BRITTLEBUSHES);
-        createPlantPatch(context, LARKSPURS, 32, WindsweptConfiguredFeatures.LARKSPURS);
-        createPlantPatch(context, VERBENAS, 32, WindsweptConfiguredFeatures.VERBENAS);
+        createPlantPatch(context, LARKSPURS, 42, WindsweptConfiguredFeatures.LARKSPURS);
+        createPlantPatch(context, VERBENAS, 42, WindsweptConfiguredFeatures.VERBENAS);
     }
 
     private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, ResourceKey<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {
