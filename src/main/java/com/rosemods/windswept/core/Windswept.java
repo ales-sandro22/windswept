@@ -1,14 +1,5 @@
 package com.rosemods.windswept.core;
 
-import com.rosemods.windswept.client.layer.FeatherCloakLegsLayer;
-import com.rosemods.windswept.client.layer.WoodenBucketHeadLayer;
-import com.rosemods.windswept.client.particle.AcaciaLeavesParticle;
-import com.rosemods.windswept.client.particle.FrostLeafParticle;
-import com.rosemods.windswept.client.particle.WillOTheWispParticle;
-import com.rosemods.windswept.client.render.entity.ChilledRenderer;
-import com.rosemods.windswept.client.render.entity.FrostArrowRenderer;
-import com.rosemods.windswept.client.render.entity.FrostbiterRenderer;
-import com.rosemods.windswept.client.render.gui.CarvedPineconeOverlay;
 import com.rosemods.windswept.common.capability.wrappers.WoodenBucketWrapper;
 import com.rosemods.windswept.common.entity.Chilled;
 import com.rosemods.windswept.common.entity.Frostbiter;
@@ -25,22 +16,11 @@ import com.rosemods.windswept.core.registry.*;
 import com.rosemods.windswept.core.registry.util.EffectSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.teamabnormals.gallery.core.data.client.GalleryItemModelProvider;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.particle.EndRodParticle;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.client.renderer.blockentity.BrushableBlockRenderer;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
-import net.minecraft.client.resources.PlayerSkin;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.component.DyedItemColor;
-import net.minecraft.world.level.FoliageColor;
-import net.minecraft.world.level.GrassColor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.api.distmarker.Dist;
@@ -53,16 +33,9 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
-import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
-import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
-import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-
-import static com.rosemods.windswept.core.registry.WindsweptBlocks.*;
 
 @Mod(Windswept.MOD_ID)
 public class Windswept {
@@ -95,14 +68,7 @@ public class Windswept {
         bus.addListener(this::dataSetup);
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
-            WindsweptCreativeTabs.setupTabEditors();
-            bus.addListener(this::registerLayerDefinitions);
-            bus.addListener(this::registerEntityRenderers);
-            bus.addListener(this::registerSpriteSets);
-            bus.addListener(this::registerGuiOverlays);
-            bus.addListener(this::registerArmourLayers);
-            bus.addListener(this::registerItemColours);
-            bus.addListener(this::registerBlockColours);
+            WindsweptClientCompat.init();
         }
 
         container.registerConfig(ModConfig.Type.COMMON, WindsweptConfig.COMMON_SPEC);
@@ -131,56 +97,6 @@ public class Windswept {
     private void registerEntitySpawns(RegisterSpawnPlacementsEvent event) {
         event.register(WindsweptEntityTypes.CHILLED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
         event.register(WindsweptEntityTypes.FROSTBITER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Frostbiter::checkFrostbiterSpawnRules, RegisterSpawnPlacementsEvent.Operation.AND);
-    }
-
-    private void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(WindsweptModelLayers.CHILLED, WindsweptModelLayers::createChilledBodyLayer);
-        event.registerLayerDefinition(WindsweptModelLayers.FROSTBITER, WindsweptModelLayers::createFrostbiterBodyLayer);
-        event.registerLayerDefinition(WindsweptModelLayers.FEATHER_CLOAK_LEGS, WindsweptModelLayers::createFeatherCloakLegsLayer);
-        event.registerLayerDefinition(WindsweptModelLayers.WOODEN_BUCKET_HEAD, WindsweptModelLayers::createWoodenBucketHelmetLayer);
-    }
-
-    private void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(WindsweptEntityTypes.CHILLED.get(), ChilledRenderer::new);
-        event.registerEntityRenderer(WindsweptEntityTypes.FROSTBITER.get(), FrostbiterRenderer::new);
-        event.registerEntityRenderer(WindsweptEntityTypes.FROST_ARROW.get(), FrostArrowRenderer::new);
-        event.registerBlockEntityRenderer(WindsweptBlockEntities.SUSPICIOUS_SNOW.get(), BrushableBlockRenderer::new);
-    }
-
-    private void registerArmourLayers(EntityRenderersEvent.AddLayers event) {
-        for (PlayerSkin.Model skin : event.getSkins()) {
-            PlayerRenderer renderer = event.getSkin(skin);
-
-            if (renderer != null) {
-                renderer.addLayer(new FeatherCloakLegsLayer<>(renderer, new HumanoidModel<>(event.getEntityModels().bakeLayer(WindsweptModelLayers.FEATHER_CLOAK_LEGS))));
-                renderer.addLayer(new WoodenBucketHeadLayer<>(renderer, new HumanoidModel<>(event.getEntityModels().bakeLayer(WindsweptModelLayers.WOODEN_BUCKET_HEAD))));
-            }
-        }
-    }
-
-    private void registerSpriteSets(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(WindsweptParticleTypes.WILL_O_THE_WISP.get(), WillOTheWispParticle.Provider::new);
-        event.registerSpriteSet(WindsweptParticleTypes.FROST_LEAF.get(), FrostLeafParticle.Provider::new);
-        event.registerSpriteSet(WindsweptParticleTypes.FEATHER_CLOAK.get(), EndRodParticle.Provider::new);
-        event.registerSpriteSet(WindsweptParticleTypes.ACACIA_LEAVES.get(), AcaciaLeavesParticle.Provider::new);
-    }
-
-    private void registerGuiOverlays(RegisterGuiLayersEvent event) {
-        event.registerAbove(VanillaGuiLayers.EFFECTS, location("carved_pinecone"), new CarvedPineconeOverlay());
-    }
-
-    private void registerItemColours(RegisterColorHandlersEvent.Item event) {
-        Block[] foliage = new Block[]{CHESTNUT_LEAVES.get(), CHESTNUT_LEAF_PILE.get(), FLOWERING_ACACIA_LEAVES.get(), FLOWERING_ACACIA_LEAF_PILE.get()};
-
-        event.register((stack, color) -> color > 0 ? -1 : DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR), WindsweptItems.SNOW_BOOTS.get());
-        event.register((stack, tintIndex) -> event.getBlockColors().getColor(((BlockItem) stack.getItem()).getBlock().defaultBlockState(), null, null, tintIndex), foliage);
-    }
-
-    private void registerBlockColours(RegisterColorHandlersEvent.Block event) {
-        Block[] foliage = new Block[]{CHESTNUT_LEAVES.get(), CHESTNUT_LEAF_PILE.get(), FLOWERING_ACACIA_LEAVES.get(), FLOWERING_ACACIA_LEAF_PILE.get()};
-
-        event.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.getDefaultColor(), foliage);
-        event.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.getDefaultColor(), YELLOW_PETALS.get());
     }
 
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
