@@ -39,10 +39,6 @@ import static com.rosemods.windswept.core.registry.WindsweptBlocks.*;
 @EventBusSubscriber(modid = Windswept.MOD_ID, value = Dist.CLIENT)
 public class WindsweptClientCompat {
 
-    public static void init() {
-        WindsweptCreativeTabs.setupTabEditors();
-    }
-
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(WindsweptModelLayers.CHILLED, WindsweptModelLayers::createChilledBodyLayer);
@@ -99,4 +95,5 @@ public class WindsweptClientCompat {
         event.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.getDefaultColor(), foliage);
         event.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.getDefaultColor(), YELLOW_PETALS.get());
     }
+
 }

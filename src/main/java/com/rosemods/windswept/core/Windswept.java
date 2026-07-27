@@ -67,9 +67,8 @@ public class Windswept {
         bus.addListener(this::registerCapabilities);
         bus.addListener(this::dataSetup);
 
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            WindsweptClientCompat.init();
-        }
+        if (FMLEnvironment.dist == Dist.CLIENT)
+            WindsweptCreativeTabs.setupTabEditors();
 
         container.registerConfig(ModConfig.Type.COMMON, WindsweptConfig.COMMON_SPEC);
         container.registerConfig(ModConfig.Type.CLIENT, WindsweptConfig.CLIENT_SPEC);
