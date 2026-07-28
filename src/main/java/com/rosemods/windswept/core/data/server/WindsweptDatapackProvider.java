@@ -23,6 +23,7 @@ public class WindsweptDatapackProvider extends DatapackBuiltinEntriesProvider {
             .add(BlueprintDataPackRegistries.STRUCTURE_REPALETTERS, WindsweptStructureRepaletters::bootstrap)
             .add(Registries.TRIM_MATERIAL, WindsweptTrimMaterials::bootstrap)
             .add(Registries.TRIM_PATTERN, WindsweptTrimPatterns::bootstrap)
+            .add(Registries.WOLF_VARIANT, WindsweptWolfVariants::bootstrap)
             .add(Registries.DAMAGE_TYPE, WindsweptDamageTypes::bootstrap)
             .add(Registries.BANNER_PATTERN, WindsweptBannerPatterns::bootstrap)
             .add(Registries.PAINTING_VARIANT, WindsweptPaintingVariants::bootstrap)
