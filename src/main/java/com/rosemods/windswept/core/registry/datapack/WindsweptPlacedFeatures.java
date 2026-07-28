@@ -131,7 +131,7 @@ public final class WindsweptPlacedFeatures {
         createPlantPatch(context, BRITTLEBUSHES, 12, WindsweptConfiguredFeatures.BRITTLEBUSHES);
         createPlantPatch(context, LARKSPURS, 42, WindsweptConfiguredFeatures.LARKSPURS);
         createPlantPatch(context, VERBENAS, 42, WindsweptConfiguredFeatures.VERBENAS);
-        createPlantPatch(context, DESERT_LILIES, 24, WindsweptConfiguredFeatures.DESERT_LILIES);
+        createPlantPatch(context, DESERT_LILIES, 16, WindsweptConfiguredFeatures.DESERT_LILIES);
     }
 
     private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, ResourceKey<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {

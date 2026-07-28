@@ -24,7 +24,7 @@ public final class WindsweptBannerPatterns {
 
     private static void register(BootstrapContext<BannerPattern> context, ResourceKey<BannerPattern> key) {
         ResourceLocation location = key.location();
-        context.register(key, new BannerPattern(location, "block.minecraft.banner." + location.getNamespace() + "." + location.getPath()));
+        context.register(key, new BannerPattern(location, "block." + location.getNamespace() + ".banner." + location.getPath()));
     }
 
 }

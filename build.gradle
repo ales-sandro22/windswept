@@ -95,3 +95,28 @@ idea {
         downloadJavadoc = true
     }
 }
+
+publishing {
+    repositories {
+        mavenLocal()
+        def NEXUS_USER = System.getenv("NEXUS_USER")
+        def NEXUS_TOKEN = System.getenv("NEXUS_TOKEN")
+        if (NEXUS_USER != null && NEXUS_TOKEN != null) {
+            maven {
+                url = uri("https://registry.somethingcatchy.net/repository/maven-snapshots/")
+                credentials {
+                    username = NEXUS_USER
+                    password = NEXUS_TOKEN
+                }
+            }
+        }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            version = "${project.mod_version}-SNAPSHOT"
+            artifactId = "windswept-${project.mc_version}"
+        }
+    }
+}
