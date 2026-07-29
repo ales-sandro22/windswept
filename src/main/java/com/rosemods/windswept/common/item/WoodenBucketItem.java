@@ -153,7 +153,7 @@ public class WoodenBucketItem extends BucketItem {
 
     @Override
     public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
-        return this.isEmpty() ? 600 : -1;
+        return this.isEmpty() ? 600 : 0;
     }
 
     @Override
