@@ -4,6 +4,7 @@ import com.rosemods.windswept.core.other.WindsweptConstants;
 import com.rosemods.windswept.core.other.tags.WindsweptItemTags;
 import com.rosemods.windswept.core.registry.WindsweptEffects;
 import com.rosemods.windswept.core.registry.WindsweptItems;
+import com.teamabnormals.blueprint.core.util.TagUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -80,7 +81,7 @@ public class ChristmasPuddingBlock extends Block {
             //    stack.hurt(1, level.getRandom(), (ServerPlayer) player);
 
             return ItemInteractionResult.SUCCESS;
-        } else if (puddingState != PuddingStates.FIRE && stack.is(WindsweptItemTags.KNIVES) && ModList.get().isLoaded("windswept_delights")) {
+        } else if (puddingState != PuddingStates.FIRE && stack.is(TagUtil.itemTag("farmersdelight", "tools/knives")) && ModList.get().isLoaded("windswept_delights")) {
             takeOneSlice(state, player, level, pos);
             level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.PLAYERS, .8f, .8f);
