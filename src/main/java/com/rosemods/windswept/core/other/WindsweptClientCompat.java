@@ -1,6 +1,6 @@
 package com.rosemods.windswept.core.other;
 
-import com.rosemods.windswept.client.layer.FeatherCloakLegsLayer;
+import com.rosemods.windswept.client.layer.FeatherCloakLayer;
 import com.rosemods.windswept.client.layer.WoodenBucketHeadLayer;
 import com.rosemods.windswept.client.particle.AcaciaLeavesParticle;
 import com.rosemods.windswept.client.particle.FrostLeafParticle;
@@ -28,7 +28,6 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
@@ -40,16 +39,15 @@ import static com.rosemods.windswept.core.registry.WindsweptBlocks.*;
 @EventBusSubscriber(modid = Windswept.MOD_ID, value = Dist.CLIENT)
 public class WindsweptClientCompat {
 
-    @SubscribeEvent
-    public static void clientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(WindsweptCreativeTabs::setupTabEditors);
+    public static void init() {
+        WindsweptCreativeTabs.setupTabEditors();
     }
 
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(WindsweptModelLayers.CHILLED, WindsweptModelLayers::createChilledBodyLayer);
         event.registerLayerDefinition(WindsweptModelLayers.FROSTBITER, WindsweptModelLayers::createFrostbiterBodyLayer);
-        event.registerLayerDefinition(WindsweptModelLayers.FEATHER_CLOAK_LEGS, WindsweptModelLayers::createFeatherCloakLegsLayer);
+        event.registerLayerDefinition(WindsweptModelLayers.FEATHER_CLOAK, WindsweptModelLayers::createFeatherCloakLayer);
         event.registerLayerDefinition(WindsweptModelLayers.WOODEN_BUCKET_HEAD, WindsweptModelLayers::createWoodenBucketHelmetLayer);
     }
 
@@ -67,7 +65,7 @@ public class WindsweptClientCompat {
             PlayerRenderer renderer = event.getSkin(skin);
 
             if (renderer != null) {
-                renderer.addLayer(new FeatherCloakLegsLayer<>(renderer, new HumanoidModel<>(event.getEntityModels().bakeLayer(WindsweptModelLayers.FEATHER_CLOAK_LEGS))));
+                renderer.addLayer(new FeatherCloakLayer<>(renderer, new HumanoidModel<>(event.getEntityModels().bakeLayer(WindsweptModelLayers.FEATHER_CLOAK))));
                 renderer.addLayer(new WoodenBucketHeadLayer<>(renderer, new HumanoidModel<>(event.getEntityModels().bakeLayer(WindsweptModelLayers.WOODEN_BUCKET_HEAD))));
             }
         }
@@ -101,5 +99,4 @@ public class WindsweptClientCompat {
         event.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.getDefaultColor(), foliage);
         event.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.getDefaultColor(), YELLOW_PETALS.get());
     }
-
 }

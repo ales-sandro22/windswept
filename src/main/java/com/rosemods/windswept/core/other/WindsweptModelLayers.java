@@ -10,7 +10,7 @@ import net.minecraft.client.model.geom.builders.*;
 public final class WindsweptModelLayers {
     public static final ModelLayerLocation CHILLED = createLocation("chilled");
     public static final ModelLayerLocation FROSTBITER = createLocation("frostbiter");
-    public static final ModelLayerLocation FEATHER_CLOAK_LEGS = createLocation("feather_cloak_legs");
+    public static final ModelLayerLocation FEATHER_CLOAK = createLocation("feather_cloak");
     public static final ModelLayerLocation WOODEN_BUCKET_HEAD = createLocation("wooden_bucket_head");
 
     private static ModelLayerLocation createLocation(String name) {
@@ -19,15 +19,16 @@ public final class WindsweptModelLayers {
 
     // Armor Models //
 
-    public static LayerDefinition createFeatherCloakLegsLayer() {
-        return LayerDefinition.create(HumanoidArmorModel.createBodyLayer(new CubeDeformation(0.25F)), 64, 32);
+    public static LayerDefinition createFeatherCloakLayer() {
+        return LayerDefinition.create(HumanoidArmorModel.createBodyLayer(new CubeDeformation(0.5F)), 64, 32);
     }
 
     public static LayerDefinition createWoodenBucketHelmetLayer() {
-        return LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(0.5F), 0.0F), 64, 32);
+        return LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(1.0F), 0.0F), 64, 32);
     }
 
     // Mob Models //
+
     public static LayerDefinition createChilledBodyLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
