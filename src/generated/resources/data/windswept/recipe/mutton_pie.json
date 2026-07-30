@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "c:cooked_mutton"
+      "tag": "c:foods/cooked_mutton"
     },
     {
       "item": "minecraft:wheat"
