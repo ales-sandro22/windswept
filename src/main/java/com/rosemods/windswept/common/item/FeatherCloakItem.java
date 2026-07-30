@@ -1,10 +1,7 @@
 package com.rosemods.windswept.common.item;
 
-import com.rosemods.windswept.core.Windswept;
-import com.rosemods.windswept.core.other.WindsweptDataProcessors;
 import com.rosemods.windswept.core.registry.WindsweptArmorMaterials;
 import com.rosemods.windswept.core.registry.WindsweptParticleTypes;
-import com.teamabnormals.blueprint.common.world.storage.tracking.IDataManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -13,14 +10,9 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RenderLivingEvent;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = Windswept.MOD_ID, value = Dist.CLIENT)
 public class FeatherCloakItem extends ArmorItem {
     public FeatherCloakItem(Properties properties) {
         super(WindsweptArmorMaterials.FEATHER_CLOAK, Type.CHESTPLATE, properties);
@@ -38,15 +30,6 @@ public class FeatherCloakItem extends ArmorItem {
                             vector.x, vector.y, vector.z, 1, 0f, 0f, 0f, 0f);
             }
         }
-    }
-
-    @SubscribeEvent
-    public static void livingRender(RenderLivingEvent.Pre<?, ?> event) {
-        LivingEntity entity = event.getEntity();
-        IDataManager data = (IDataManager) entity;
-
-        if (data.getValue(WindsweptDataProcessors.CLOAKED))
-            event.setCanceled(true);
     }
 
     @Override

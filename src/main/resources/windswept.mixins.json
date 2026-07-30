@@ -17,6 +17,7 @@
     "IceBlockMixin",
     "LiquidBlockMixin",
     "LivingEntityMixin",
+    "LivingEntityVisibilityMixin",
     "LlamaMixin",
     "MossBlockMixin",
     "PanicGoalMixin",
@@ -38,6 +39,7 @@
     "ZombieMixin"
   ],
   "client": [
+    "client.EntityRenderDispatcherMixin",
     "client.GoatRendererMixin",
     "client.ItemInHandRendererMixin",
     "client.LivingEntityRendererMixin",
